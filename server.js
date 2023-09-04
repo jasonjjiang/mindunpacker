@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
+const mongoose = require('mongoose');
 // Always require and configure near the top
 require('dotenv').config();
 // Connect to the database
@@ -23,12 +24,28 @@ const port = process.env.PORT || 3001;
 app.use(require('./config/checkToken'));
 app.use('/api/users', require('./routes/api/users'));
 
+
+//Error Handling
+app.use((err, req, res, next) => {
+  const status = err.statusCode || 500;
+  const message = err.message;
+  res.status(status).json({ message: message })
+})
+
+
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX/API requests
-app.get('/*', function(req, res) {
+
+app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.listen(port, function() {
-  console.log(`Express app running on port ${port}`);
-});
+mongoose.connect(process.env.DATABASE_URL).then(
+  () => {
+    app.listen(port, function () {
+      console.log(`Express app running on port ${port}`);
+    });
+  }
+)
+
+

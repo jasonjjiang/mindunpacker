@@ -8,6 +8,17 @@ module.exports = {
   checkToken
 };
 
+/*--- Helper Functions --*/
+
+function createJWT(user) {
+  return jwt.sign(
+    // data payload
+    { user },
+    process.env.SECRET,
+    { expiresIn: '24h' }
+  );
+}
+
 async function create(req, res) {
   try {
     // Add the user to the db
@@ -36,15 +47,4 @@ function checkToken(req, res) {
   // req.user will always be there for you when a token is sent
   console.log('req.user', req.user);
   res.json(req.exp);
-}
-
-/*--- Helper Functions --*/
-
-function createJWT(user) {
-  return jwt.sign(
-    // data payload
-    { user },
-    process.env.SECRET,
-    { expiresIn: '24h' }
-  );
 }
