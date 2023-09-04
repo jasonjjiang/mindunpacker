@@ -23,14 +23,8 @@ const port = process.env.PORT || 3001;
 // Put API routes here, before the "catch all" route
 app.use(require('./config/checkToken'));
 app.use('/api/users', require('./routes/api/users'));
+app.use('/api/journal', require('./routes/api/journal'));
 
-
-//Error Handling
-app.use((err, req, res, next) => {
-  const status = err.statusCode || 500;
-  const message = err.message;
-  res.status(status).json({ message: message })
-})
 
 
 // The following "catch all" route (note the *) is necessary
