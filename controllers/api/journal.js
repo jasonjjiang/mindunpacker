@@ -4,7 +4,8 @@ const journalM = require('../../models/journal');
 
 exports.getAllJournal = async (req, res) => {
     try {
-        const journals = await journalM.find().populate("createdBy", "name email");
+        const userID = req.user._id;
+        const journals = await journalM.find({ createdBy: userID }).populate("createdBy", "name email");
         res.status(200).json({ message: "Fetched", data: journals });
 
     } catch (err) {
@@ -14,8 +15,9 @@ exports.getAllJournal = async (req, res) => {
 
 exports.getJournal = async (req, res) => {
     try {
+        const userID = req.user._id;
         const id = req.params.id;
-        const journal = await journalM.findById(id).populate("createdBy", "name email");
+        const journal = await journalM.findOne({ createdBy: userID, _id: id }).populate("createdBy", "name email");
         if (!journal) {
             return res.status(404).json({ message: "Not Found" });
         }
@@ -28,7 +30,6 @@ exports.getJournal = async (req, res) => {
 exports.createJournal = async (req, res) => {
     try {
         const { title, entry } = req.body;
-        console.log(entry)
         const userId = req.user._id;
         if (!entry || entry.trim().length === 0) {
             const err = new Error("Entry Can Not Be Empty");
@@ -50,6 +51,7 @@ exports.createJournal = async (req, res) => {
 
 exports.updateJournal = async (req, res) => {
     try {
+        const userID = req.user._id;
         const { title, entry } = req.body;
         const id = req.params.id;
         if (!id) {
@@ -57,7 +59,7 @@ exports.updateJournal = async (req, res) => {
             err.statusCode = 422;
             throw err;
         }
-        const journal = await journalM.findById(id);
+        const journal = await journalM.findOne({ _id: id, createdBy: userID });
         journal.title = title;
         journal.entry = entry;
         await journal.save();
@@ -68,9 +70,10 @@ exports.updateJournal = async (req, res) => {
 }
 
 exports.deleteJournal = async (req, res) => {
-    const id = req.params.id;
     try {
-        await journalM.findByIdAndDelete(id);
+        const id = req.params.id;
+        const userID = req.user._id;
+        await journalM.findOneAndDelete({ _id: id, createdBy: userID });
         res.status(200).json({ message: "Journal Deleted" })
     } catch (err) {
         res.status(400).json({ err: err.message })
