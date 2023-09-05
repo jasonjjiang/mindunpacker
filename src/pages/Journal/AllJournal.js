@@ -62,7 +62,9 @@ export default function AllJournal() {
             <div style={{ display: 'flex', flexDirection: "column", justifyContent: "start", alignItems: "center", marginTop: '40px' }}>
                 <Typography variant='h4' component="h2" mb="1rem" fontWeight="700" >All Journals</Typography>
                 <TableContainer sx={{ width: '90vw' }} component={Paper}>
-                    <Button sx={{ margin: '10px' }} variant="outlined" href='/journal/new'>Add New</Button>
+                    <Link to="/journal/new">
+                        <Button sx={{ margin: '10px' }} variant="outlined" >Add New</Button>
+                    </Link>
                     {journal.length === 0 && <Alert severity="info">Please Enter Some Records</Alert>}
                     {journal.length !== 0 && <Table sx={{ minWidth: 700 }} aria-label="customized table">
                         <TableHead>
