@@ -5,6 +5,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { PostAdd } from '@mui/icons-material';
 import NavBar from '../../components/NavBar/NavBar';
 import { api } from '../../api/api';
+import { Link } from 'react-router-dom';
 
 
 
@@ -81,7 +82,9 @@ export default function AllJournal() {
                                     <StyledTableCell align="left">{row.title}</StyledTableCell>
                                     <StyledTableCell align="left">{row.createdAt}</StyledTableCell>
                                     <StyledTableCell align="center">
-                                        <Button sx={{ marginRight: '10px' }} ><PostAdd /></Button>
+                                        <Link to={`/journal/edit/${row._id}`} >
+                                            <Button href="/journal/edit" sx={{ marginRight: '10px' }} ><PostAdd /></Button>
+                                        </Link>
                                         <Button><DeleteIcon /></Button>
                                     </StyledTableCell>
                                 </StyledTableRow>
