@@ -12,14 +12,18 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import NavBar from '../../components/NavBar/NavBar';
-import { useFormik } from 'formik';
+import { ErrorMessage, useFormik } from 'formik';
+import AuthContext from '../../contexts/AuthCtx';
+import { useNavigate } from 'react-router-dom';
+import { api } from '../../api/api';
+import { CircularProgress } from '@mui/material';
 
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="https://themindunpacker.com/">
+        The Mind Unpacker
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -31,14 +35,9 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+  const navigate = useNavigate();
+  const AuthCtx = React.useContext(AuthContext);
+  const [loading, setIsLoading] = React.useState(false);
 
   const validationSchema = yup.object({
     email: yup
@@ -47,21 +46,42 @@ export default function SignUp() {
       .required('Email is required'),
     password: yup
       .string('Enter your password')
-      .min(8, 'Password should be of minimum 8 characters length')
+      .min(5, 'Password should be of minimum 5 characters length')
       .required('Password is required'),
+    fName: yup.string("Enter First Name").required("First Name Is Required"),
+    lName: yup.string("Enter Last Name").required("Last Name Is Required")
   });
 
   const formik = useFormik({
     initialValues: {
       email: '',
       password: '',
+      fName: '',
+      lName: ''
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      setIsLoading(true);
+      api
+        .post("api/users/", {
+          email: values.email,
+          password: values.password,
+          name: `${values.fName} ${values.lName}`
+        })
+        .then((res) => {
+          const responseData = res.data;
+          const token = responseData.token;
+          const userData = responseData.user;
+          AuthCtx.login(token, userData);
+          setIsLoading(false);
+          navigate("/");
+        })
+        .catch((err) => {
+          formik.setFieldError("email", "Email Already Exists");
+          setIsLoading(false);
+        });
     },
   });
-
   return (
     <ThemeProvider theme={defaultTheme}>
       <NavBar coloured={true} />
@@ -81,27 +101,38 @@ export default function SignUp() {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box component="form" noValidate onSubmit={formik.handleSubmit} sx={{ mt: 3 }}>
+            
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="given-name"
-                  name="firstName"
+                  name="fName"
                   required
                   fullWidth
-                  id="firstName"
+                  id="fName"
                   label="First Name"
                   autoFocus
+                  value={formik.values.fName}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  error={formik.touched.fName && Boolean(formik.errors.fName)}
+                  helperText={formik.touched.fName && formik.errors.fName}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
                   required
                   fullWidth
-                  id="lastName"
+                  id="lName"
                   label="Last Name"
-                  name="lastName"
+                  name="lName"
                   autoComplete="family-name"
+                  value={formik.values.lName}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  error={formik.touched.lName && Boolean(formik.errors.lName)}
+                  helperText={formik.touched.lName && formik.errors.lName}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -128,6 +159,11 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  value={formik.values.password}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  error={formik.touched.password && Boolean(formik.errors.password)}
+                  helperText={formik.touched.password && formik.errors.password}
                 />
               </Grid>
             </Grid>
@@ -136,8 +172,8 @@ export default function SignUp() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              onClick={formik.handleSubmit}
             >
+              {loading && <CircularProgress sx={{ marginRight: '10px' }} color="secondary" />}
               Sign Up
             </Button>
             <Grid container justifyContent="flex-end">
