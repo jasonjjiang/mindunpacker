@@ -3,6 +3,7 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 const mongoose = require('mongoose');
+const cors = require('cors');
 // Always require and configure near the top
 require('dotenv').config();
 // Connect to the database
@@ -10,6 +11,7 @@ require('./config/database');
 
 const app = express();
 
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 
