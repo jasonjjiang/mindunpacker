@@ -36,7 +36,7 @@ export default function NavBar({ coloured }) {
         }
         {/* <span>Welcome, {user.name}</span> */}
         {AuthCtx.isLoggedIn &&
-          <Link to="" onClick={handleLogOut}>Leave The Mind Unpacker</Link>
+          <Link to="/" onClick={handleLogOut}>Leave The Mind Unpacker</Link>
         }
       </nav>
     </div>
