@@ -100,7 +100,7 @@ function NewJournal() {
                     </Button>
                     <Grid container justifyContent="flex-end">
                         <Grid item>
-                            <Link href="/journal" variant="body2">
+                            <Link to="/journal" variant="body2">
                                 Go Back
                             </Link>
                         </Grid>
