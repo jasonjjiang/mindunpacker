@@ -1,12 +1,18 @@
-import { Link } from 'react-router-dom';
-import * as userService from '../../utilities/users-service';
+import { useContext } from 'react';
+import AuthContext from '../../contexts/AuthCtx';
+
+import { Link, useNavigate } from 'react-router-dom';
 
 import styles from './NavBar.module.css';
 
-export default function NavBar({ user, setUser, coloured }) {
+export default function NavBar({ coloured }) {
+
+  const AuthCtx = useContext(AuthContext);
+  const navigate = useNavigate();
+
   function handleLogOut() {
-    userService.logOut();
-    setUser(null);
+    AuthCtx.logout();
+    navigate("/");
   }
 
   return (
@@ -16,16 +22,20 @@ export default function NavBar({ user, setUser, coloured }) {
       </div>
       <nav className={`${styles.links} ${coloured && styles.coloured}`}>
         <Link to="/">Home</Link>
-        {user && (
+        {AuthCtx.isLoggedIn && (
           <>
-            <Link to="/orders/new">Create Journal Entry</Link>
-            <Link to="/orders/new">View Journal Entries</Link>
+            <Link to="/journal/new">Create Journal Entry</Link>
+            <Link to="/journal">View Journal Entries</Link>
           </>
         )}
-        <Link to="/login"> Enter The Mind Unpacker</Link>
-        <Link to="/signup"> Join The Mind Unpacker</Link>
+        {!AuthCtx.isLoggedIn &&
+          <>
+            <Link to="/login">Enter The Mind Unpacker</Link>
+            <Link to="/signup"> Join The Mind Unpacker</Link>
+          </>
+        }
         {/* <span>Welcome, {user.name}</span> */}
-        {user &&
+        {AuthCtx.isLoggedIn &&
           <Link to="" onClick={handleLogOut}>Leave The Mind Unpacker</Link>
         }
       </nav>
