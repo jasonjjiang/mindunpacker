@@ -66,7 +66,7 @@ export default function Login() {
           const responseData = res.data;
           const token = responseData.token;
           const userData = responseData.user;
-          AuthCtx.login(token,  userData);
+          AuthCtx.login(token, userData);
           setIsLoading(false);
           navigate("/");
         })
@@ -89,6 +89,9 @@ export default function Login() {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            boxShadow: 2,
+            padding: '20px',
+            borderRadius: '5px'
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
