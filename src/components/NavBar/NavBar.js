@@ -16,11 +16,11 @@ export default function NavBar({ coloured }) {
   }
 
   return (
-    <div className={styles.container}>
-      <div className={`${styles.logo} ${coloured && styles.colouredLogo}`}>
+    <div className={`${styles.container} ${coloured && styles.coloured}`}>
+      <div className={`${styles.logo}`}>
         <h1>The Mind Unpacker</h1>
       </div>
-      <nav className={`${styles.links} ${coloured && styles.coloured}`}>
+      <nav className={`${styles.links}`}>
         <Link to="/">Home</Link>
         {AuthCtx.isLoggedIn && (
           <>

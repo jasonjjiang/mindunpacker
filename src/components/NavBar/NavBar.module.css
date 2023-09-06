@@ -23,12 +23,6 @@
   color: white;
   font-family: Inter;
 }
-.colouredLogo {
-  color: var(--text-dark);
-}
-.coloured a{
-  color: var(--primary);
-}
-.coloured a:hover {
-  color: var(--primary);
+.coloured{
+  background-color: var(--primary);
 }
