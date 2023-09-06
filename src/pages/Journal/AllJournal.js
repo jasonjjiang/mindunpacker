@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import { Box } from '@mui/system';
 import { Modal } from '@mui/base/Modal';
 import { useSpring, animated } from '@react-spring/web';
+import dayjs from 'dayjs';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -87,7 +88,12 @@ export default function AllJournal() {
                                         {row.entry.slice(0, 50)}
                                     </StyledTableCell>
                                     <StyledTableCell align="left">{row.title}</StyledTableCell>
-                                    <StyledTableCell align="left">{row.createdAt}</StyledTableCell>
+                                    <StyledTableCell align="left">
+                                        {dayjs(
+                                            `${row.createdAt.split("T")[0]} ${row.createdAt.split("T")[1]
+                                            }`
+                                        ).format("MMM D YYYY, h:mm a")}
+                                    </StyledTableCell>
                                     <StyledTableCell align="center">
                                         <Link to={`/journal/edit/${row._id}`} >
                                             <Button href="/journal/edit" sx={{ marginRight: '10px' }} ><PostAdd /></Button>
