@@ -23,6 +23,68 @@
   color: white;
   font-family: Inter;
 }
-.coloured{
+.coloured {
   background-color: var(--primary);
+}
+.resBtn{display:none}
+
+@media screen and (max-width: 1024px) {
+  .links a {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 958px) {
+  .container {
+    flex-direction: column;
+    row-gap: 20px;
+  }
+}
+@media screen and (max-width: 680px) {
+  .coloured nav{
+    background-color: var(--primary);
+  }
+  .resBtn{
+    outline: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: block;
+  }
+  .container {
+    align-items: start;
+    justify-content: start;
+  }
+  .res {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+  }
+  .closed {
+    display: none !important;
+  }
+  .opened {
+    display: flex !important;
+  }
+  .container {
+    padding-left: 0;
+  }
+  .container nav {
+    background-color: transparent;
+    flex-direction: column;
+    row-gap: 20px;
+    padding: 20px 10px;
+    width: 100vw;
+    text-align: left;
+    animation: moveIn 0.6s ease-in-out;
+  }
+  @keyframes moveIn {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
 }
