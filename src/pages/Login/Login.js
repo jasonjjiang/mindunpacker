@@ -81,7 +81,12 @@ export default function Login() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <NavBar coloured={true} />
-      <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth="xs" sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column'
+      }}>
         <CssBaseline />
         <Box
           sx={{
@@ -91,10 +96,11 @@ export default function Login() {
             alignItems: 'center',
             boxShadow: 2,
             padding: '20px',
-            borderRadius: '5px'
+            borderRadius: '5px',
+            minWidth: '50vw'
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
             {/* <LockOutlinedIcon /> */}
           </Avatar>
           <Typography component="h1" variant="h5">

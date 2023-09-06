@@ -77,7 +77,7 @@ export default function AllJournal() {
                             <TableRow>
                                 <StyledTableCell>Entry</StyledTableCell>
                                 <StyledTableCell align="left">Title</StyledTableCell>
-                                <StyledTableCell align="left">Created At</StyledTableCell>
+                                <StyledTableCell align="left">Date</StyledTableCell>
                                 <StyledTableCell align="center">Actions&nbsp;</StyledTableCell>
                             </TableRow>
                         </TableHead>

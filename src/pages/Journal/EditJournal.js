@@ -67,7 +67,8 @@ function EditJournel() {
                 <Box component="form" noValidate onSubmit={formik.handleSubmit} sx={{
                     mt: 3, boxShadow: 2,
                     padding: '20px',
-                    borderRadius: '5px'
+                    borderRadius: '5px',
+                    minWidth: '50vw'
                 }}>
                     <Typography sx={{ marginBottom: '20px', color: "#1976d2" }} fontWeight="600" component="h1" variant="h5">
                         Edit Journal
