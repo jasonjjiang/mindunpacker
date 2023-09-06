@@ -30,7 +30,6 @@ function EditJournel() {
     const initValues = prevJournal ? { title: prevJournal.title, entry: prevJournal.entry } : {
         title: "", entry: ""
     }
-    console.log(initValues)
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: initValues,

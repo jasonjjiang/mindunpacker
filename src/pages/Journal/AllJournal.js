@@ -122,7 +122,8 @@ export default function AllJournal() {
                             Are You Sure You Want to Delete?
                         </span>
                         <div style={{ marginTop: '10px' }}>
-                            <Button color='error' onClick={deleteHandler}>Delete</Button>
+                            <Button variant='contained' color='error' onClick={deleteHandler}>Delete</Button>
+                            <Button sx={{ marginLeft: '10px' }} variant='contained' color='success' onClick={handleClose}>Cancel</Button>
                         </div>
                     </Box>
                 </Fade>
