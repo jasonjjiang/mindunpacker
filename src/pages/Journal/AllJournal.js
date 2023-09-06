@@ -6,21 +6,10 @@ import { PostAdd } from '@mui/icons-material';
 import NavBar from '../../components/NavBar/NavBar';
 import { api } from '../../api/api';
 import { Link } from 'react-router-dom';
-
-
-
-function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24),
-    createData('Ice cream sandwich', 237, 9.0, 37),
-    createData('Eclair', 262, 16.0, 24),
-    createData('Cupcake', 305, 3.7, 67),
-    createData('Gingerbread', 356, 16.0, 49),
-];
-
+import PropTypes from 'prop-types';
+import { Box } from '@mui/system';
+import { Modal } from '@mui/base/Modal';
+import { useSpring, animated } from '@react-spring/web';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -47,6 +36,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export default function AllJournal() {
 
     const [journal, setJournal] = React.useState([]);
+    const [changed, isChanged] = React.useState(false);
 
     React.useEffect(() => {
         api.get("api/journal/all").then((res) => {
@@ -54,7 +44,22 @@ export default function AllJournal() {
         }).catch((err) => {
             console.log(err);
         })
-    }, [])
+    }, [changed])
+
+    const [selectedJournal, setSelectedJournal] = React.useState();
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+    const deleteModalHandler = (id) => {
+        setSelectedJournal(id);
+        handleOpen();
+    }
+    const deleteHandler = () => {
+        api.delete(`api/journal/delete/${selectedJournal}`).then(() => {
+            isChanged(prev => !prev);
+            handleClose();
+        }).catch((err) => { })
+    }
 
     return (
         <>
@@ -87,7 +92,7 @@ export default function AllJournal() {
                                         <Link to={`/journal/edit/${row._id}`} >
                                             <Button href="/journal/edit" sx={{ marginRight: '10px' }} ><PostAdd /></Button>
                                         </Link>
-                                        <Button><DeleteIcon /></Button>
+                                        <Button onClick={deleteModalHandler.bind(null, row._id)} ><DeleteIcon /></Button>
                                     </StyledTableCell>
                                 </StyledTableRow>
                             ))}
@@ -95,6 +100,97 @@ export default function AllJournal() {
                     </Table>}
                 </TableContainer>
             </div>
+
+            <StyledModal
+                aria-labelledby="spring-modal-title"
+                aria-describedby="spring-modal-description"
+                open={open}
+                onClose={handleClose}
+                closeAfterTransition
+                slots={{ backdrop: StyledBackdrop }}
+            >
+                <Fade in={open}>
+                    <Box sx={style}>
+                        <h2 style={{ marginBottom: '10px' }} id="spring-modal-title">Delete</h2>
+                        <span id="spring-modal-description" >
+                            Are You Sure You Want to Delete?
+                        </span>
+                        <div style={{ marginTop: '10px' }}>
+                            <Button color='error' onClick={deleteHandler}>Delete</Button>
+                        </div>
+                    </Box>
+                </Fade>
+            </StyledModal>
+
         </>
     );
 }
+
+const Backdrop = React.forwardRef((props, ref) => {
+    const { open, ...other } = props;
+    return <Fade ref={ref} in={open} {...other} />;
+});
+
+Backdrop.propTypes = {
+    open: PropTypes.bool.isRequired,
+};
+
+const StyledModal = styled(Modal)`
+    position: fixed;
+    z-index: 1300;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  `;
+
+const StyledBackdrop = styled(Backdrop)`
+    z-index: -1;
+    position: fixed;
+    inset: 0;
+    background-color: rgb(0 0 0 / 0.5);
+    -webkit-tap-highlight-color: transparent;
+  `;
+
+const Fade = React.forwardRef(function Fade(props, ref) {
+    const { in: open, children, onEnter, onExited, ...other } = props;
+    const style = useSpring({
+        from: { opacity: 0 },
+        to: { opacity: open ? 1 : 0 },
+        onStart: () => {
+            if (open && onEnter) {
+                onEnter(null, true);
+            }
+        },
+        onRest: () => {
+            if (!open && onExited) {
+                onExited(null, true);
+            }
+        },
+    });
+
+    return (
+        <animated.div ref={ref} style={style} {...other}>
+            {children}
+        </animated.div>
+    );
+});
+
+Fade.propTypes = {
+    children: PropTypes.element.isRequired,
+    in: PropTypes.bool,
+    onEnter: PropTypes.func,
+    onExited: PropTypes.func,
+};
+
+const style = (theme) => ({
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    borderRadius: '12px',
+    padding: '16px 32px 24px 32px',
+    backgroundColor: theme.palette.mode === 'dark' ? '#0A1929' : 'white',
+    boxShadow: 16,
+});
