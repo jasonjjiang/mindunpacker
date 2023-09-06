@@ -96,7 +96,7 @@ export default function AllJournal() {
                                     </StyledTableCell>
                                     <StyledTableCell align="center">
                                         <Link to={`/journal/edit/${row._id}`} >
-                                            <Button href="/journal/edit" sx={{ marginRight: '10px' }} ><PostAdd /></Button>
+                                            <Button sx={{ marginRight: '10px' }} ><PostAdd /></Button>
                                         </Link>
                                         <Button onClick={deleteModalHandler.bind(null, row._id)} ><DeleteIcon /></Button>
                                     </StyledTableCell>
