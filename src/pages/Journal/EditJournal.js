@@ -6,7 +6,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { api } from '../../api/api';
 
-function EditJournel() {
+function EditJournal() {
     const [loading, setIsLoading] = React.useState(false);
     const [prevJournal, setPrevJournal] = useState()
     const navigate = useNavigate();
@@ -129,4 +129,4 @@ function EditJournel() {
     )
 }
 
-export default EditJournel
+export default EditJournal

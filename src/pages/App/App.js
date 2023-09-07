@@ -5,7 +5,7 @@ import Login from '../Login/Login';
 import SignUp from '../SignUp/SignUp';
 import AllJournal from '../Journal/AllJournal';
 import NewJournal from '../Journal/NewJournal';
-import EditJournel from '../Journal/EditJournal';
+import EditJournal from '../Journal/EditJournal';
 import { useContext } from 'react';
 import AuthContext from '../../contexts/AuthCtx';
 
@@ -20,7 +20,7 @@ export default function App() {
         <>
           <Route path="/journal" element={<AllJournal />} />
           <Route path="/journal/new" element={<NewJournal />} />
-          <Route path="/journal/edit/:id" element={<EditJournel />} />
+          <Route path="/journal/edit/:id" element={<EditJournal />} />
         </>
       }
       {!AuthCtx.isLoggedIn && <>
