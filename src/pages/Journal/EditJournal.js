@@ -37,7 +37,7 @@ function EditJournal() {
         onSubmit: (values) => {
             setIsLoading(true);
             api
-                .put(`api/journal/update/${id}`, {
+                .put(`/api/journal/update/${id}`, {
                     title: values.title,
                     entry: values.entry,
                 })
