@@ -1,10 +1,8 @@
 # MindUnpacker
 
-Welcome to MindUnpacker, your haven for decompresing the files in your mental OS. 
+Welcome to MindUnpacker, your haven for decompresing the files in your mental OS. Decompress your mind's files: one entry at a time.
 
 This online journal empowers you to create, update, and delete journal entries, helping you organize your thoughts, feelings, and experiences. 
-
-Decompress your mind's files: one entry at a time.
 
 **Screenshots**
 ![Homepage](https://github.com/jasonjjiang/mindunpacker/assets/124200590/0b69f08e-19ee-4386-9e74-aa6fdfb8331e)
@@ -21,15 +19,15 @@ Create an account by providing your email and setting a password. Once registere
 
 Start journaling! Click the "Create New Entry" button to begin your first entry.
 
-**Creating a new Entry**
+**Creating A New Entry**
 
 Click the "Create Journal Entry" button. Give your entry an optional title. Start typing your thoughts, experiences, or anything you want to unpack. Save your entry when you're done by clicking "Create New".
 
-**Updating an Entry**
+**Updating An Existing Entry**
 
 Click "View Journal Entries". Navigate to the entry you want to update. Click the "Edit" button under "Actions". Make your changes. Save your updated entry.
 
-**Deleting an Entry**
+**Deleting A Former Entry**
 
 Click "View Journal Entries". Navigate to the entry you want to delete. Click the "Delete" button under "Actions". Confirm the deletion.
 
