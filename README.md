@@ -41,9 +41,11 @@ Confirm the deletion.
 
 **Technologies Used**
 
-MERN stack: MongoDB, Express.JS, React.JS, Node.JS
-Languages: JavaScript, HTML, CSS
-Libraries: Formik, Material UI
+**MERN**: MongoDB, Express.JS, React.JS, Node.JS
+
+**Languages**: JavaScript, HTML, CSS
+
+**Libraries**: Formik, Material UI
 
 **Create Journal Entries**
 
