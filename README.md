@@ -17,27 +17,21 @@ Decompress your mind's files: one entry at a time.
 
 Visit the MindUnpacker website: https://mindunpacker-a19cbe83ea71.herokuapp.com/.
 
-Create an account by providing your email and setting a password.
-Once registered, log in to your account.
+Create an account by providing your email and setting a password. Once registered, log in to your account.
+
 Start journaling! Click the "Create New Entry" button to begin your first entry.
-Usage
-Creating a New Entry
+
+**Creating a new Entry
+**
+Log in to your account. Click the "Create New Entry" button. Give your entry a title. Start typing your thoughts, experiences, or anything you want to unpack. Save your entry when you're done.
+
+**Updating an Entry**
+
 Log in to your account.
-Click the "Create New Entry" button.
-Give your entry a title.
-Start typing your thoughts, experiences, or anything you want to unpack.
-Save your entry when you're done.
-Updating an Entry
-Log in to your account.
-Navigate to the entry you want to update.
-Click the "Edit" button.
-Make your changes.
-Save your updated entry.
-Deleting an Entry
-Log in to your account.
-Navigate to the entry you want to delete.
-Click the "Delete" button.
-Confirm the deletion.
+Navigate to the entry you want to update. Click the "Edit" button. Make your changes. Save your updated entry.
+
+**Deleting an Entry**
+Log in to your account. Navigate to the entry you want to delete. Click the "Delete" button. Confirm the deletion.
 
 **Technologies Used**
 
