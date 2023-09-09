@@ -2,11 +2,7 @@
 
 Welcome to MindUnpacker, your digital haven for decompresing the files in your mental OS. This online journal empowers you to create, update, and delete journal entries, helping you organize your thoughts, feelings, and experiences. Decompress your mind, one entry at a time.
 
-**Table of Contents
-Features
-Getting Started
-Usage
-Contributing**
+**Screenshots**
 
 **Features**
 
