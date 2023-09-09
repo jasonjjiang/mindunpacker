@@ -13,7 +13,37 @@ Decompress your mind's files: one entry at a time.
 ![Edit Journal](https://github.com/jasonjjiang/mindunpacker/assets/124200590/fc1ffec6-b802-4b8f-8df5-ea781f7d4f64)
 ![Delete Journal](https://github.com/jasonjjiang/mindunpacker/assets/124200590/5863931b-9e91-4cd3-8b6f-5af5da2b5f34)
 
-**Features**
+**Getting Started**
+
+Visit the MindUnpacker website: https://mindunpacker-a19cbe83ea71.herokuapp.com/.
+
+Create an account by providing your email and setting a password.
+Once registered, log in to your account.
+Start journaling! Click the "Create New Entry" button to begin your first entry.
+Usage
+Creating a New Entry
+Log in to your account.
+Click the "Create New Entry" button.
+Give your entry a title.
+Start typing your thoughts, experiences, or anything you want to unpack.
+Save your entry when you're done.
+Updating an Entry
+Log in to your account.
+Navigate to the entry you want to update.
+Click the "Edit" button.
+Make your changes.
+Save your updated entry.
+Deleting an Entry
+Log in to your account.
+Navigate to the entry you want to delete.
+Click the "Delete" button.
+Confirm the deletion.
+
+**Technologies Used**
+
+MERN stack: MongoDB, Express.JS, React.JS, Node.JS
+Languages: JavaScript, HTML, CSS
+Libraries: Formik, Material UI
 
 **Create Journal Entries**
 
@@ -39,28 +69,4 @@ Our intuitive interface is designed to provide a seamless journaling experience.
 
 Access your journal from anywhere, at any time. MindUnpacker is accessible on various devices, ensuring your thoughts are never out of reach.
 
-**Getting Started**
 
-Visit the MindUnpacker website.
-
-Create an account by providing your email and setting a password.
-Once registered, log in to your account.
-Start journaling! Click the "Create New Entry" button to begin your first entry.
-Usage
-Creating a New Entry
-Log in to your account.
-Click the "Create New Entry" button.
-Give your entry a title.
-Start typing your thoughts, experiences, or anything you want to unpack.
-Save your entry when you're done.
-Updating an Entry
-Log in to your account.
-Navigate to the entry you want to update.
-Click the "Edit" button.
-Make your changes.
-Save your updated entry.
-Deleting an Entry
-Log in to your account.
-Navigate to the entry you want to delete.
-Click the "Delete" button.
-Confirm the deletion.
