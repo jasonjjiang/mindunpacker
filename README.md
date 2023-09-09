@@ -1,6 +1,10 @@
 # MindUnpacker
 
-Welcome to MindUnpacker, your digital haven for decompresing the files in your mental OS. This online journal empowers you to create, update, and delete journal entries, helping you organize your thoughts, feelings, and experiences. Decompress your mind, one entry at a time.
+Welcome to MindUnpacker, your haven for decompresing the files in your mental OS. 
+
+This online journal empowers you to create, update, and delete journal entries, helping you organize your thoughts, feelings, and experiences. 
+
+Decompress your mind's files: one entry at a time.
 
 **Screenshots**
 ![Homepage](https://github.com/jasonjjiang/mindunpacker/assets/124200590/0b69f08e-19ee-4386-9e74-aa6fdfb8331e)
