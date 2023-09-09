@@ -25,7 +25,7 @@ function NewJournal() {
         onSubmit: (values) => {
             setIsLoading(true);
             api
-                .post("api/journal/create", {
+                .post("/api/journal/create", {
                     title: values.title,
                     entry: values.entry,
                 })
