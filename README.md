@@ -1,6 +1,8 @@
 # MindUnpacker
 
-Welcome to MindUnpacker, your safe haven for decompresing the files in your mental OS. Decompress your mind's files: one entry at a time.
+Welcome to MindUnpacker, your safe haven for decompresing the files in your mental OS.
+
+Decompress your mind's files: one entry at a time.
 
 MindUnpacker is an online journal that empowers you to create, update, and delete journal entries, helping you organize your thoughts, feelings, and experiences. 
 
