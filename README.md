@@ -1,8 +1,8 @@
 # MindUnpacker
 
-Welcome to MindUnpacker, your haven for decompresing the files in your mental OS. Decompress your mind's files: one entry at a time.
+Welcome to MindUnpacker, your safe haven for decompresing the files in your mental OS. Decompress your mind's files: one entry at a time.
 
-This online journal empowers you to create, update, and delete journal entries, helping you organize your thoughts, feelings, and experiences. 
+MindUnpacker is an online journal that empowers you to create, update, and delete journal entries, helping you organize your thoughts, feelings, and experiences. 
 
 **Screenshots**
 ![Homepage](https://github.com/jasonjjiang/mindunpacker/assets/124200590/0b69f08e-19ee-4386-9e74-aa6fdfb8331e)
@@ -13,11 +13,9 @@ This online journal empowers you to create, update, and delete journal entries, 
 
 **Getting Started**:
 
-Visit the MindUnpacker website: https://mindunpacker-a19cbe83ea71.herokuapp.com/.
+Visit the MindUnpacker's website: https://mindunpacker-a19cbe83ea71.herokuapp.com/.
 
-Create an account by providing your email and setting a password. Once registered, log in to your account.
-
-Start journaling! Click the "Create New Entry" button to begin your first entry.
+Create an account by providing your email and setting a password. Once registered, log in to your account and start journaling! Click the "Create New Entry" button to begin your first entry.
 
 **Creating A New Entry**
 
@@ -33,7 +31,7 @@ Click "View Journal Entries". Navigate to the entry you want to delete. Click th
 
 **Technologies Used**:
 
-**MERN**: MongoDB, Express.JS, React.JS, Node.JS
+**MERN Technology Stack**: MongoDB, Express.JS, React.JS, Node.JS
 
 **Languages**: JavaScript, HTML, CSS
 
@@ -64,5 +62,3 @@ Our intuitive interface is designed to provide a seamless journaling experience.
 **Cross-Platform Access**
 
 Access your journal from anywhere, at any time. MindUnpacker is accessible on various devices, ensuring your thoughts are never out of reach.
-
-
