@@ -1,4 +1,4 @@
-# *MindUnpacker*
+# **MindUnpacker**
 
 Welcome to MindUnpacker, your safe haven for decompresing the files in your mental OS.
 
